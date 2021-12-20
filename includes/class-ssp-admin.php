@@ -290,7 +290,7 @@ class SSP_Admin {
 	/**
 	 * Ajoute un champ à la page d'édition "Edit Series"
 	 */
-	public function edit_series_archive_field($term, $taxonomy) {
+	public function edit_series_archive_field($term) {
 		$currently = get_term_meta( $term->term_id, 'is_archive', true );
 		?><tr class="form-field term-archive-wrap">
         <th scope="row"><label for="is_archive">Archive</label></th>
@@ -304,7 +304,7 @@ class SSP_Admin {
 	/**
 	 * enregistre le champ ajouté par edit_series_archive_field
 	 */
-	public function save_archive_on_edited_series($term_id, $taxonomy) {
+	public function save_archive_on_edited_series($term_id) {
 		if( isset( $_POST['is_archive'] ) && 'yes' == $_POST['is_archive'] ){
       update_term_meta( $term_id, 'is_archive', "yes" );
     } else {
