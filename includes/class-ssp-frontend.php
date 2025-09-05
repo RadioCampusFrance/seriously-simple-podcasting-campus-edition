@@ -79,8 +79,8 @@ class SSP_Frontend {
 		add_action( 'loop_start', array( $this, 'show_podcasts_list_header_block' ));
 	}
 
-	public function show_podcasts_list_header_block() {
-		if ($this->series_list_attempted) return;
+	public function show_podcasts_list_header_block($query) {
+		if ($this->series_list_attempted || !$query->is_main_query() || !$query->is_archive()) return;
 		$this->series_list_attempted = true;
 
 		$cat_title = single_cat_title("", false); // if !empty > émission seule
